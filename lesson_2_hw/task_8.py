@@ -19,7 +19,6 @@ count = 0
 numbers = int(input('Сколько чисел вы хотите ввести:'))
 dig = int(input('Какую цифру ищем:'))
 
-
 for i in range(numbers):
     num = int(input(f'Введите {i+1} число: '))
     while num > 0:
