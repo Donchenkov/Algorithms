@@ -22,4 +22,3 @@ for i in range(len(array)):
         rife_num = array[i]
 
 print(f'Число {rife_num} встречается {mx_count} раз(-а)')
-
