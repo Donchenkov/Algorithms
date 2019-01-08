@@ -4,7 +4,7 @@
 
 import random
 
-SIZE = 100
+SIZE = 10
 max_item = 100
 mn_index = 0
 mx_index = 0

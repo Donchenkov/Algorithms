@@ -4,7 +4,7 @@
 
 import random
 
-SIZE = 100
+SIZE = 10
 max_item = 10
 array = [random.randint(1, max_item) for _ in range(SIZE)]
 print(array)
