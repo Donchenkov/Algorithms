@@ -7,10 +7,11 @@
 # import cProfile
 
 def prime_eratosfen(num):
-    n = int(num ** 1.5)
+    n = int((num * 2) ** 2)
     sieve = [i for i in range(n)]
 
     sieve[1] = 0
+    print(sieve)
 
     for i in range(2, n):
         if sieve[i] != 0:
@@ -18,9 +19,11 @@ def prime_eratosfen(num):
             while j < n:
                 sieve[j] = 0
                 j += i
+    print(sieve)
 
     result = [i for i in sieve if i != 0]
-
+    print(result)
+    #
     return result[num - 1]
 
 
@@ -33,8 +36,7 @@ def prime_eratosfen(num):
 #   1    0.000    0.000    0.001    0.001 task_2_2.py:9(prime_eratosfen) - 100
 #   1    0.009    0.009    0.012    0.012 task_2_2.py:9(prime_eratosfen) - 500
 #   1    0.017    0.017    0.021    0.021 task_2_2.py:9(prime_eratosfen) - 1000
-
-# print(prime_eratosfen(10000))
+print(prime_eratosfen(3))
 
 '''
 Если я правильно понимаю то сложность алгоритма за счет самого решета и повторной пробежке за счет 24 строки составляет 
