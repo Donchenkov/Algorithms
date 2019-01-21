@@ -63,44 +63,44 @@ def symb(res):
 summ_result = suumm(num_1_num, num_2_num)
 print(symb(summ_result))
 
-# res = deque()
-# spam = 0
-# result = []
-#
-# for i in num_1_num[::-1]:  # [10, 2] -> [2, 10]
-#
-#     for j in num_2_num[::-1]:  # [12, 4, 15] -> [15, 4, 12]
-#         mult = j * i + spam
-#         if mult >= MAXX:
-#             res.appendleft(mult % MAXX)
-#
-#             spam = mult // MAXX
-#         else:
-#             res.appendleft(mult)
-#             spam = 0
-#     else:
-#         if spam > 0:
-#             res.appendleft(spam)
-#     spam = 0
-#
-#     result.append(res)
-#     res = deque()
-#
-# # print(result)
-#
-# max_len = 0
-# for i in range(len(result)):
-#     result[i] += [0] * i
-#     if len(result[i]) > max_len:
-#         max_len = len(result[i])
-#
-# for i in range(len(result)):
-#     if len(result[i]) < max_len:
-#         result[i].appendleft(0)
-#
-# mult_result = [0] * max_len
-#
-# for i in range(len(result)):
-#     mult_result = suumm(mult_result, result[i])
-#
-# print(symb(mult_result))
+res = deque()
+spam = 0
+result = []
+
+for i in num_1_num[::-1]:  # [10, 2] -> [2, 10]
+
+    for j in num_2_num[::-1]:  # [12, 4, 15] -> [15, 4, 12]
+        mult = j * i + spam
+        if mult >= MAXX:
+            res.appendleft(mult % MAXX)
+
+            spam = mult // MAXX
+        else:
+            res.appendleft(mult)
+            spam = 0
+    else:
+        if spam > 0:
+            res.appendleft(spam)
+    spam = 0
+
+    result.append(res)
+    res = deque()
+
+# print(result)
+
+max_len = 0
+for i in range(len(result)):
+    result[i] += [0] * i
+    if len(result[i]) > max_len:
+        max_len = len(result[i])
+
+for i in range(len(result)):
+    if len(result[i]) < max_len:
+        result[i].appendleft(0)
+
+mult_result = [0] * max_len
+
+for i in range(len(result)):
+    mult_result = suumm(mult_result, result[i])
+
+print(symb(mult_result))
