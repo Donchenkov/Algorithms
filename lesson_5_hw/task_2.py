@@ -22,48 +22,47 @@ while len(num_1) != len(num_2):
     elif len(num_1) > len(num_2):
         num_2.appendleft('0')
 
-print(num_1)
-print(num_2)
+# print(num_1)
+# print(num_2)
 
 num_1_num = [SYMBOLS[i] for i in num_1 if i in SYMBOLS]
 num_2_num = [SYMBOLS[i] for i in num_2 if i in SYMBOLS]
 
-print(num_2_num)
-print(num_1_num)
+# print(num_1_num)
+# print(num_2_num)
 
-spam = 0
-res = deque()
-for i in range(len(num_1_num) + 1):
-    if i == 0:
-        continue
-    summ = num_1_num[-i] + num_2_num[-i] + spam
-    if summ >= MAXX:
-        res.appendleft(summ % MAXX)
-        spam = 1
+def suumm(num_1_num, num_2_num):
+    spam = 0
+    res = deque()
+
+    for i in range(len(num_1_num) + 1):
+        if i == 0:
+            continue
+        summ = num_1_num[-i] + num_2_num[-i] + spam
+        if summ >= MAXX:
+            res.appendleft(summ % MAXX)
+            spam = 1
+        else:
+            res.appendleft(summ)
+            spam = 0
     else:
-        res.appendleft(summ)
-        spam = 0
-else:
-    if spam == 1:
-        res.appendleft(1)
+        if spam == 1:
+            res.appendleft(1)
+    return res
 
-result = deque()
-counter = 0
 
-for i in num_1_num[::-1]:  # [10, 2] -> [2, 10]
-    reso = {}
-    for j in num_2_num[::-1]:  # [12, 4, 15] -> [15, 4, 12]
+def symb(res):
+    result = []
+    for i in res:
+        for key, value in SYMBOLS.items():
+            if i == value:
+                result.append(key)
+    return result
 
-        mult = j * i
-        counter += 1
-        reso.update({str(counter): mult})
 
-    counter = 0
-    counter += 1
-    result.append(reso)
-print(result)
+summ_result = suumm(num_1_num, num_2_num)
+print(symb(summ_result))
 
-#########################
 # res = deque()
 # spam = 0
 # result = []
@@ -87,16 +86,21 @@ print(result)
 #     result.append(res)
 #     res = deque()
 #
-# print(result)
-#########################
-
-print(res)
-
-result = []
-
-for i in res:
-    for key, value in SYMBOLS.items():
-        if i == value:
-            result.append(key)
-
-print(result)
+# # print(result)
+#
+# max_len = 0
+# for i in range(len(result)):
+#     result[i] += [0] * i
+#     if len(result[i]) > max_len:
+#         max_len = len(result[i])
+#
+# for i in range(len(result)):
+#     if len(result[i]) < max_len:
+#         result[i].appendleft(0)
+#
+# mult_result = [0] * max_len
+#
+# for i in range(len(result)):
+#     mult_result = suumm(mult_result, result[i])
+#
+# print(symb(mult_result))
